@@ -4,8 +4,12 @@
 #include <stdlib.h>
 #include <vector>
 #include <map>
+#include <thread> // Para usar sleep_for()
+#include <chrono> // Para usar seconds()
 
 using namespace std;
+using namespace this_thread; // Para usar sleep_for()
+using namespace chrono; // Para usar seconds()
 
 struct coordinates{
     int paragraph, wordNumber;
@@ -19,9 +23,25 @@ ofstream create_txt(string file_name);
 void searcher(int &paragraph, string line, Map &positions, ofstream &process, char &state);
 void check_word(char state, int paragraph, int wordNumber, Map &positions);
 void results(Map positions);
+void graph_dfa();
 
 int main(){
-    preparation();
+    char repeat;
+    do{
+        preparation();
+        graph_dfa();
+        do{
+            cout << "Desea repetir el programa? (s/n): ";
+            cin >> repeat;
+            repeat = tolower(repeat);
+            if (repeat != 's' && repeat != 'n'){
+                cout << "Opcion no valida\n";
+                cout << "Intente de nuevo\n";
+            }
+        } while (repeat != 's' && repeat != 'n');
+        sleep_for(seconds(1));
+        system("cls");
+    } while (repeat == 's');
     return 0;
 }
 
@@ -48,7 +68,6 @@ void preparation(){
                 // Llamar a la funcion searcher(...)
                 searcher(paragraph, line, positions, process, state);
             }
-            // cout << line << endl;
         }
         file.close();
         process.close();
@@ -227,4 +246,21 @@ ofstream create_txt(string file_name){
     system("cls");
 
     return file;
+}
+
+void graph_dfa(){
+    char op;
+    do{
+        cout << "\n\nDesea ver el diagrama del automata? (s/n): ";
+        cin >> op;
+        op = tolower(op);
+        if (op != 's' && op != 'n'){
+            cout << "Opcion no valida\n";
+            cout << "Intente de nuevo\n";
+        }
+    } while (op != 's' && op != 'n');
+
+    if (op == 's'){
+        system("python automata.py");
+    }
 }
