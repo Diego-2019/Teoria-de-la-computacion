@@ -56,7 +56,7 @@ bool mode(){
 void alphabet_power(bool automatic, int &power){
     // Se establece el valor de la potencia en modo automatico
     if (automatic){
-        power = rand() % (MAX - 3); 
+        power = rand() % (MAX - 7); 
         cout << "\nEl valor de la potencia es: " << power << " ";
         for (int i = 0; i < 4; i++){
             sleep_for(seconds(1));
