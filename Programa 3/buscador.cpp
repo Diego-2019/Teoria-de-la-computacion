@@ -208,10 +208,10 @@ void check_word(char state, int paragraph, int wordNumber, Map &positions){
 }
 
 void results(Map positions){
-    // element tomará el valor de cada elemento del mapa (clave, valor)
+    // element tomara el valor de cada elemento del mapa (clave, valor)
     for (auto element : positions){
         cout << "Se encontraron " << element.second.size() << " ocurrencias de la palabra '" << element.first << "'\n";
-        // positions tomará el valor de cada elemento del vector
+        // positions tomara el valor de cada elemento del vector
         for (auto positions : element.second){
             cout << "En el parrafo " << positions.paragraph << " es la palabra numero " << positions.wordNumber << endl;
         }
