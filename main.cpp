@@ -23,15 +23,15 @@ int main() {
         
         if (programa == 0){
             cout << "Ejecutando universo.exe" << endl;
-            SetCurrentDirectoryW(L"C:\\Users\\diego\\Documentos\\ESCOM\\Programas\\Teoria de la computacion\\Programa 1");
+            SetCurrentDirectoryW(L"C:/Users/diego/Documentos/ESCOM/Programas/Teoria de la computacion/Programa 1");
             system("universo.exe");
-            // system("\"C:\\Users\\diego\\Documentos\\ESCOM\\Programas\\Teoria de la computacion\\Programa 1\\universo.exe\"");
+            // system("\"C:/Users/diego/Documentos/ESCOM/Programas/Teoria de la computacion/Programa 1/universo.exe\"");
         } 
         else{
             cout << "Ejecutando buscador.exe" << endl;
             SetCurrentDirectoryW(L"C:/Users/diego/Documentos/ESCOM/Programas/Teoria de la computacion/Programa 3");
             system("buscador.exe");
-            // system("\"C:\\Users\\diego\\Documentos\\ESCOM\\Programas\\Teoria de la computacion\\Programa 3\\buscador.exe\"");
+            // system("\"C:/Users/diego/Documentos/ESCOM/Programas/Teoria de la computacion/Programa 3/buscador.exe\"");
         }
         
         repeat = rand() % 2;
