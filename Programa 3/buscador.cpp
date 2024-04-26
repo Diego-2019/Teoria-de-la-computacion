@@ -65,13 +65,11 @@ void preparation(){
         while(getline(file, line)){
             if(!line.empty()){
                 paragraph++;
-                // Llamar a la funcion searcher(...)
                 searcher(paragraph, line, positions, process, state);
             }
         }
         file.close();
         process.close();
-        // Llamar a la funcion results(...)
         results(positions);
     }
     else{
@@ -172,7 +170,6 @@ void searcher(int &paragraph, string line, Map &positions, ofstream &process, ch
                 break;
         }
         process << "{" << state << "}\n";
-        // Llamar a la funcion check_word(...)
         check_word(state, paragraph, wordNumber, positions);
         pos++;
     }
