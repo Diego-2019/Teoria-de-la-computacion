@@ -227,6 +227,6 @@ def DFA(ruta_absoluta):
 
 
 if __name__ == '__main__':
-    ruta_absoluta = 'C:/Users/diego/Documentos/ESCOM/Programas/Teoria de la computacion/Programa 3/automata'
+    ruta_absoluta = 'C:/Users/diego/Documentos/ESCOM/Programas/Teoria de la computacion/Primer bloque/Programa 3/automata'
     DFA(ruta_absoluta)
     show_dfa(ruta_absoluta + '.png')

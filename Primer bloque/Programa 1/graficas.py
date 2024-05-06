@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Leer los datos
-data = pd.read_csv('Teoria de la computacion\\Programa 1\\ocurrencias.csv')
+data = pd.read_csv('Teoria de la computacion\\Primer bloque\\Programa 1\\ocurrencias.csv')
 
 # Elimina espacios al inicio y al final de los nombres de las columnas
 data.columns = data.columns.str.strip()
