@@ -33,7 +33,7 @@ start_state = 'q'
 accept_states = ['f']
 
 # Leer input_string y result_text del archivo
-file_path = 'C:/Users/diego/Documentos/ESCOM/Programas/Teoria de la computacion/Segundo bloque/Programa 1/animation.txt'
+file_path = 'C:/Users/diego/Documentos/ESCOM/Programas/Teoria de la computacion/Segundo bloque/Programa 4/animation.txt'
 with open(file_path, 'r') as file:
     lines = file.readlines()
     input_string = lines[0].strip()  # Primera línea para input_string
@@ -72,7 +72,7 @@ def draw_automaton():
     pygame.draw.rect(screen, GREEN, (*pos, 60, 60), 0)
     pygame.draw.rect(screen, BLACK, (*pos, 60, 60), 2)
     text = font.render(current_state, True, BLUE)
-    screen.blit(text, (pos[0] + 10, pos[1] + 10))
+    screen.blit(text, (pos[0] + 20, pos[1] + 15))
 
     # Dibujar cadena de entrada
     input_text = font.render(f'Entrada: {input_string[input_pointer:]}', True, BLACK)
