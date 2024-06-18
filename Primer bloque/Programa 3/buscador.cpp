@@ -220,7 +220,7 @@ ofstream create_txt(string file_name){
     ofstream file;
     bool retry = false;
     int intentos = 3;
-
+    
     //Bucle para intentar abrir el archivo
     do{
         // Si ya existe el archivo, se sobreescribe
@@ -239,9 +239,9 @@ ofstream create_txt(string file_name){
             exit(1);
         }
     } while (retry);
-
+    
     system("cls");
-
+    
     return file;
 }
 
