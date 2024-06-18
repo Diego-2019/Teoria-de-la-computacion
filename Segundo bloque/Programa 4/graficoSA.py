@@ -6,10 +6,10 @@ import os
 # Inicializar pygame
 pygame.init()
 
-# Configuración de la pantalla
+# Configuracion de la pantalla
 width, height = 1535, 790
 screen = pygame.display.set_mode((width, height))
-pygame.display.set_caption("Autómata de Pila")
+pygame.display.set_caption("Automata de Pila")
 
 # Colores
 WHITE = (255, 255, 255)
@@ -20,7 +20,7 @@ GREEN = (0, 255, 0)
 # Fuente
 font = pygame.font.Font(None, 36)
 
-# Definición del autómata de pila
+# Definicion del automata de pila
 states = ['q', 'p', 'f']
 transitions = {
     ('q', '0', 'Z'): ('q', 'XZ'),
@@ -36,18 +36,18 @@ accept_states = ['f']
 file_path = 'C:/Users/diego/Documentos/ESCOM/Programas/Teoria de la computacion/Segundo bloque/Programa 4/animation.txt'
 with open(file_path, 'r') as file:
     lines = file.readlines()
-    input_string = lines[0].strip()  # Primera línea para input_string
-    result_text = lines[1].strip()   # Segunda línea para result_text
+    input_string = lines[0].strip()  # Primera linea para input_string
+    result_text = lines[1].strip()   # Segunda linea para result_text
 
-# Borrar el archivo de animación
+# Borrar el archivo de animacion
 os.remove(file_path)
 
-# Inicializar el autómata
+# Inicializar el automata
 current_state = start_state
 stack = ['Z']
 input_pointer = 0
 
-# Función para dibujar una flecha
+# Funcion para dibujar una flecha
 def draw_arrow(start, end, color=BLACK, arrow_size=10, arrow_angle=30):
     pygame.draw.line(screen, color, start, end, 2)
     angle = math.atan2(end[1] - start[1], end[0] - start[0])
@@ -57,11 +57,11 @@ def draw_arrow(start, end, color=BLACK, arrow_size=10, arrow_angle=30):
                    end[1] - arrow_size * math.sin(angle + math.radians(arrow_angle)))
     pygame.draw.polygon(screen, color, [end, left_arrow, right_arrow])
 
-# Función para dibujar el autómata
+# Funcion para dibujar el automata
 def draw_automaton():
     screen.fill(WHITE)
 
-    # Posición del estado actual
+    # Posicion del estado actual
     state_position = {
         'q': (width // 2 - 30, height // 2 - 30),
         'p': (width // 2 - 30, height // 2 - 30),
@@ -90,7 +90,7 @@ def draw_automaton():
 
     pygame.display.flip()
 
-# Función para procesar la cadena de entrada
+# Funcion para procesar la cadena de entrada
 def process_input():
     global current_state, stack, input_pointer
     if input_pointer < len(input_string):
@@ -136,7 +136,7 @@ while running:
         pygame.time.wait(3000)
         running = False
 
-    clock.tick(1)  # Controlar la velocidad de la animación
+    clock.tick(1)  # Controlar la velocidad de la animacion
 
 pygame.time.wait(1000)
 
