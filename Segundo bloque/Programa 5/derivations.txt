@@ -1,0 +1,23 @@
+Derivaciones:
+
+0. S
+1. iCtSA
+2. iCtiCtSAA
+3. iCtiCtSA
+4. iCtiCtS
+5. iCtiCtiCtSA
+6. iCtiCtiCtiCtSAA
+7. iCtiCtiCtiCtiCtSAAA
+8. iCtiCtiCtiCtiCtS;eSAA
+9. iCtiCtiCtiCtiCtS;eiCtSAAA
+10. iCtiCtiCtiCtiCtS;eiCtiCtSAAAA
+11. iCtiCtiCtiCtiCtS;eiCtiCtS;eSAAA
+12. iCtiCtiCtiCtiCtS;eiCtiCtS;eiCtSAAAA
+13. iCtiCtiCtiCtiCtS;eiCtiCtS;eiCtiCtSAAAAA
+14. iCtiCtiCtiCtiCtS;eiCtiCtS;eiCtiCtS;eSAAAA
+15. iCtiCtiCtiCtiCtS;eiCtiCtS;eiCtiCtS;eSAAA
+16. iCtiCtiCtiCtiCtS;eiCtiCtS;eiCtiCtS;eSAA
+17. iCtiCtiCtiCtiCtS;eiCtiCtiCtSA;eiCtiCtS;eSAA
+18. iCtiCtiCtiCtiCtS;eiCtiCtiCtS;eS;eiCtiCtS;eSAA
+19. iCtiCtiCtiCtiCtS;eiCtiCtiCtS;eS;eiCtiCtS;eS;eSA
+20. iCtiCtiCtiCtiCtS;eiCtiCtiCtS;eS;eiCtiCtS;eS;eS;eS

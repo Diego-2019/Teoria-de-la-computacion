@@ -1,0 +1,14 @@
+Cadena a validar: ((()))()
+
+Paso 0:  B
+Paso 1:  (RB
+Paso 2:  ((RRB
+Paso 3:  (((RRRB
+Paso 4:  ((()RRB
+Paso 5:  ((())RB
+Paso 6:  ((()))B
+Paso 7:  ((()))(RB
+Paso 8:  ((()))()B
+Paso 9:  ((()))()
+
+La cadena "((()))()" es valida

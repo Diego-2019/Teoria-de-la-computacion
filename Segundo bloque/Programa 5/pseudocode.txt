@@ -1,0 +1,25 @@
+Cadena generada: iCtiCtiCtiCtiCtS;eiCtiCtiCtS;eS;eiCtiCtS;eS;eS;eS
+
+if (condition) then
+	if (condition) then
+		if (condition) then
+			if (condition) then
+				if (condition) then
+					statement
+				else
+					if (condition) then
+						if (condition) then
+							if (condition) then
+								statement
+							else
+								statement
+						else
+							if (condition) then
+								if (condition) then
+									statement
+								else
+									statement
+							else
+								statement
+					else
+						statement
