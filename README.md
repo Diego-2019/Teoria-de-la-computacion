@@ -73,7 +73,7 @@ En caso de querer graficar usando estos scripts se debe hacer lo siguiente:
 Ambos scripts requieren que el archivo `ocurrencias.csv` esté en el mismo directorio.
 
 ## 2. Buscador de palabras
-El programa `buscador.cpp` implementa un automata que reconoce todas las palabras del conjunto $\{\text{ferminal},\ \text{feminazi},\ \text{tonta},\ \text{torta},\ \text{vieja},\ \text{feminista}\}$ dentro de un texto.
+El programa `buscador.cpp` implementa un automata que reconoce todas las palabras del conjunto {feminal, feminazi, tonta, torta, vieja, feminista}. dentro de un texto.
 
 En primer lugar, se diseñó el autómata finito no determinista (NFA) correspondiente al conjunto de palabras objetivo. Posteriormente, para la implementación este NFA fue transformado en un autómata finito determinista (DFA) mediante el método de los subconjuntos creando y traduciendo la tabla de transiciones en el DFA.
 <p align="center">
