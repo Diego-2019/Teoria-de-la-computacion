@@ -6,6 +6,7 @@
 - [Automata paridad](#automata-paridad)
 - [Primer bloque](#primer-bloque)
   - [1. Universo](#1-universo)
+  - [2. Buscador de palabras](#2-buscador-de-palabras)
 
 # Automata paridad
 ``paridad.cpp`` es un código de ejemplo sobre autómatas que verifica que una cadena tenga un numero par de 0's y 1's usando un switch case y funciones para mostrar diferentes formas de programar un automata. 
@@ -25,7 +26,7 @@ una vez creado el ejecutable podrá utilizarse.
 # Primer bloque
 
 ## 1. Universo
-El programa ``universo.cpp`` genera y analiza el universo de cadenas binarias sobre el alfabeto $\Sigma = {a,b}$ considerando todas las longitudes desde 0 hasta n.
+El programa ``universo.cpp`` genera y analiza el universo de cadenas binarias sobre el alfabeto $\Sigma = \{a,b\}$ considerando todas las longitudes desde 0 hasta n.
 Formalmente la salida corresponde al conjunto $L = \cup_{k=0}^n \Sigma^k$
 
 > **📑Ejemplo con $n = 4$**
@@ -71,4 +72,38 @@ En caso de querer graficar usando estos scripts se debe hacer lo siguiente:
 
 Ambos scripts requieren que el archivo `ocurrencias.csv` esté en el mismo directorio.
 
-<!-- ## 2. Buscador -->
+## 2. Buscador de palabras
+El programa `buscador.cpp` implementa un automata que reconoce todas las palabras del conjunto $\{\text{ferminal},\ \text{feminazi},\ \text{tonta},\ \text{torta},\ \text{vieja},\ \text{feminista}\}$ dentro de un texto.
+
+En primer lugar, se diseñó el autómata finito no determinista (NFA) correspondiente al conjunto de palabras objetivo. Posteriormente, para la implementación este NFA fue transformado en un autómata finito determinista (DFA) mediante el método de los subconjuntos creando y traduciendo la tabla de transiciones en el DFA.
+<p align="center">
+ <img src="Images/NFA buscador.png" alt="NFA buscador de palabras" width="600"/>
+</p>
+<p align="center">
+ <img src="Images/Tabla de transiciones.png" alt="Tabla de transiciones" width="600"/>
+</p>
+<p align="center">
+ <img src="Images/DFA buscador.png" alt="DFA buscador de palabras" width="600"/>
+</p>
+
+> **📑Ejemplo de palabras reconocidas**
+> 
+> Para el texto:
+> 
+> "Esa feminista y esa torta estaban con una feminazi y una vieja tonta"
+>
+> El programa detectará y contará las apariciones de cada palabra reservada, indicando su posición dentro del texto (numero de párrafo y numero de palabra).
+
+El autómata recorre el texto carácter por carácter y utiliza el DFA para identificar, contar y ubicar cada aparición exacta de las palabras buscadas, especificando la posición donde fueron encontradas.
+
+La ejecución del programa genera el archivo de salida `proceso.txt` el cual registra, para cada carácter leído, el estado actual del autómata, mostrando toda la secuencia de estados y transiciones recorridas durante el procesamiento del texto.
+
+Adicionalmente, el programa genera con ayuda de un script en python una visualización gráfica del DFA utilizado para el reconocimiento de las palabras, permitiendo analizar su estructura y funcionamiento.
+
+Para la compilación del programa se necesita tener los archivos `automata.py`, `html_txt.py`, y un archivo html (en este caso `temas de genero.html`) para lectura en el mismo directorio que el programa principal `buscador.cpp` y utilizar el siguiente comando:
+
+```
+g++ buscador.cpp -o buscador
+```
+
+Una vez creado el ejecutable se podrá utilizar el programa.
