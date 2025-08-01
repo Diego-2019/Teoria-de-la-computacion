@@ -7,6 +7,8 @@
 - [Primer bloque](#primer-bloque)
   - [1. Universo](#1-universo)
   - [2. Buscador de palabras](#2-buscador-de-palabras)
+- [Segundo bloque](#segundo-bloque)
+  - [3. Automata de pila](#3-automata-de-pila)
 
 # Automata paridad
 ``paridad.cpp`` es un código de ejemplo sobre autómatas que verifica que una cadena tenga un numero par de 0's y 1's usando un switch case y funciones para mostrar diferentes formas de programar un automata. 
@@ -29,8 +31,7 @@ una vez creado el ejecutable podrá utilizarse.
 El programa ``universo.cpp`` genera y analiza el universo de cadenas binarias sobre el alfabeto $\Sigma = \{a,b\}$ considerando todas las longitudes desde 0 hasta n.
 Formalmente la salida corresponde al conjunto $L = \cup_{k=0}^n \Sigma^k$
 
-> **📑Ejemplo con $n = 4$**
-> 
+> **📑Ejemplo con $n = 4$** \
 > $L = \{\epsilon, a, b, aa, ab, ba, bb, aaa, ..., bbbb\}$ 
 > 
 > donde $\epsilon$ es la cadena vacía.
@@ -58,8 +59,7 @@ Alternativamente se crearon 2 códigos extra que ocupan el archivo ``ocurrencias
 El script en Python es ideal para valores de $n$ pequeños ($n \leqslant 15$).
 Para valores de $n$ mayores (hasta donde la memoria RAM lo permita), el script en MATLAB aprovecha optimizaciones de manejo de matrices, pero aun así el tiempo de ejecución y consumo de memoria pueden volverse prohibitivos para $n$ grandes.
 
-> **📝Nota** 
->
+> **📝Nota** \
 > Se intentó graficar con el código de MATLAB en una laptop con 16 GB de RAM con un $n = 28$ pero el sistema se volvió tan lento que era casi imposible realizar alguna acción.
 
 En caso de querer graficar usando estos scripts se debe hacer lo siguiente:
@@ -86,10 +86,8 @@ En primer lugar, se diseñó el autómata finito no determinista (NFA) correspon
  <img src="Images/DFA buscador.png" alt="DFA buscador de palabras" width="600"/>
 </p>
 
-> **📑Ejemplo de palabras reconocidas**
-> 
-> Para el texto:
-> 
+> **📑Ejemplo de palabras reconocidas** \
+> Para el texto: \
 > "Esa feminista y esa torta estaban con una feminazi y una vieja tonta"
 >
 > El programa detectará y contará las apariciones de cada palabra reservada, indicando su posición dentro del texto (numero de párrafo y numero de palabra).
@@ -107,3 +105,56 @@ g++ buscador.cpp -o buscador
 ```
 
 Una vez creado el ejecutable se podrá utilizar el programa.
+
+# Segundo bloque
+
+## 3. Automata de pila
+El programa ``stackAutomata.cpp`` implementa un automata de pila diseñado para reconocer el lenguaje libre de contexto:
+
+$$L = \{0^n 1^n | n \geqslant 1\}$$
+
+es decir, todas las cadenas que consisten en una secuencia de ceros seguida por una secuencia de unos, con igual cantidad de cada uno.
+
+Las transiciones del autómata de pila son las siguientes:
+
+- $\delta(q, 0, Z_0) = {(q, XZ_0)}$
+Si estamos en el estado $q$, leemos un $0$ y el símbolo en el tope de la pila es $Z_0$, permanecemos en $q$ y apilamos una $X$ encima de $Z_0$.
+
+- $\delta(q, 0, X) = {(q, XX)}$
+Si estamos en $q$, leemos un $0$ y el tope es $X$, permanecemos en $q$ y apilamos otro $X$ (por cada $0$ leído, se apila un $X$).
+
+- $\delta(q, 1, X) = {(p, \epsilon)}$
+Si estamos en $q$, leemos un $1$ y el tope es $X$, cambiamos al estado $p$ y desapilamos un $X$ (por cada $1$ leído en este punto, se desapila un $X$).
+
+- $\delta(p, 1, X) = {(p, \epsilon)}$
+Si estamos en $p$, leemos un $1$ y el tope es $X$, permanecemos en $p$ y desapilamos un $X$ (por cada $1$, se desapila un $X$).
+
+- $\delta(p, \epsilon, Z_0) = {(f, Z_0)}$
+Si estamos en $p$, la entrada se ha consumido ($\epsilon$) y el tope es $Z_0$, pasamos al estado final $f$ y la pila solo contiene $Z_0$ (aceptación).
+
+La cadena de entrada puede ser introducida manualmente por el usuario o generada aleatoriamente por el programa. En el modo automático, la longitud máxima de la cadena es de $100{,}000$ caracteres.
+
+> **📑 Ejemplo de cadenas aceptadas** \
+> $011$ → no aceptada \
+> $0011$ → aceptada \
+> $000111$ → aceptada \
+> $00011$ → no aceptada
+
+Si la cadena ingresada tiene longitud menor o igual a 10, el programa ofrece una animación visual del funcionamiento del autómata de pila, mostrando paso a paso las transiciones y el contenido de la pila.
+
+A la salida del programa se genera el archivo ``transitions.txt`` el cual contiene el registro de la evaluación completa del automata a traves de IDs para la cadena procesada.
+
+Para la compilación del programa se necesita tener el archivo ``graficoSA.py`` en el mismo directorio que el programa principal ``stackAutomata.cpp`` y utilizar el siguiente comando:
+
+```
+g++ stackAutomata.cpp -o stackAutomata
+```
+
+Una vez creado el ejecutable, podrá ejecutarse y seguir las instrucciones para ingresar la cadena manualmente o permitir que se genere automáticamente.
+
+> **📝Nota** \
+> El archivo ``gráficoSA.py`` es necesario para la animación del autómata cuando se procesan cadenas de longitud menor o igual a 10.
+
+<!-- ## 4. Backus-Naur
+## 5. Gramática no ambigua
+## 6. Maquina de Turing -->

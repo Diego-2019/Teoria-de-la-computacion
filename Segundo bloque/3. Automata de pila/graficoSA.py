@@ -33,7 +33,7 @@ start_state = 'q'
 accept_states = ['f']
 
 # Leer input_string y result_text del archivo
-file_path = 'C:/Users/diego/Documentos/ESCOM/Programas/Teoria de la computacion/Segundo bloque/Programa 4/animation.txt'
+file_path = '../3. Automata de pila/animation.txt'
 with open(file_path, 'r') as file:
     lines = file.readlines()
     input_string = lines[0].strip()  # Primera linea para input_string
