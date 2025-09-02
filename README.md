@@ -9,6 +9,7 @@
   - [2. Buscador de palabras](#2-buscador-de-palabras)
 - [Segundo bloque](#segundo-bloque)
   - [3. Automata de pila](#3-automata-de-pila)
+  - [4. Backus-Naur](#4-backus-naur)
 
 # Automata paridad
 ``paridad.cpp`` es un código de ejemplo sobre autómatas que verifica que una cadena tenga un numero par de 0's y 1's usando un switch case y funciones para mostrar diferentes formas de programar un automata. 
@@ -73,7 +74,7 @@ En caso de querer graficar usando estos scripts se debe hacer lo siguiente:
 Ambos scripts requieren que el archivo `ocurrencias.csv` esté en el mismo directorio.
 
 ## 2. Buscador de palabras
-El programa `buscador.cpp` implementa un automata que reconoce todas las palabras del conjunto {feminal, feminazi, tonta, torta, vieja, feminista}. dentro de un texto.
+El programa `buscador.cpp` implementa un automata que reconoce todas las palabras del conjunto {feminal, feminazi, tonta, torta, vieja, feminista} dentro de un texto.
 
 En primer lugar, se diseñó el autómata finito no determinista (NFA) correspondiente al conjunto de palabras objetivo. Posteriormente, para la implementación este NFA fue transformado en un autómata finito determinista (DFA) mediante el método de los subconjuntos creando y traduciendo la tabla de transiciones en el DFA.
 <p align="center">
@@ -155,6 +156,20 @@ Una vez creado el ejecutable, podrá ejecutarse y seguir las instrucciones para 
 > **📝Nota** \
 > El archivo ``gráficoSA.py`` es necesario para la animación del autómata cuando se procesan cadenas de longitud menor o igual a 10.
 
-<!-- ## 4. Backus-Naur
-## 5. Gramática no ambigua
+## 4. Backus-Naur
+El programa ``backusNaur.cpp`` implementa una derivación automática de la gramática Backus-Naur que define un condicional IF en la siguiente forma:
+$$S \quad \rightarrow \quad iCtSA$$
+$$A \quad \rightarrow \quad ;eS \: | \: \epsilon $$
+
+El programa genera derivaciones de la gramática hasta alcanzar un número de IF's determinado por el usuario o por la máquina (con un limite de 1000 derivaciones) y al final muestra estas derivaciones.
+
+Además, el programa genera dos archivos, uno llamado ``derivations.txt`` que muestra el paso a paso de las derivaciones y otro llamado ``pseudocode.txt`` que contiene el pseudo-código de la cadena generada con la gramática.
+
+Para la compilación del archivo solo basta con usar el siguiente comando:
+```
+g++ backusNaur.cpp -o backusNaur
+```
+Y para usarlo solo se debe ejecutar el archivo ``backusNaur.exe`` generado.
+
+<!-- ## 5. Gramática no ambigua
 ## 6. Maquina de Turing -->
