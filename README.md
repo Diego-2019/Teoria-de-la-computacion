@@ -158,8 +158,10 @@ Una vez creado el ejecutable, podrá ejecutarse y seguir las instrucciones para 
 
 ## 4. Backus-Naur
 El programa ``backusNaur.cpp`` implementa una derivación automática de la gramática Backus-Naur que define un condicional IF en la siguiente forma:
+
 $$S \quad \rightarrow \quad iCtSA$$
-$$A \quad \rightarrow \quad ;eS \: | \: \epsilon $$
+
+$$A \quad \rightarrow \quad ;eS \space | \space \epsilon $$
 
 El programa genera derivaciones de la gramática hasta alcanzar un número de IF's determinado por el usuario o por la máquina (con un limite de 1000 derivaciones) y al final muestra estas derivaciones.
 
