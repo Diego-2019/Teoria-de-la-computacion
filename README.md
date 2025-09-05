@@ -10,6 +10,7 @@
 - [Segundo bloque](#segundo-bloque)
   - [3. Automata de pila](#3-automata-de-pila)
   - [4. Backus-Naur](#4-backus-naur)
+  - [5. Gramática no ambigua](#5-gramática-no-ambigua)
 
 # Automata paridad
 ``paridad.cpp`` es un código de ejemplo sobre autómatas que verifica que una cadena tenga un numero par de 0's y 1's usando un switch case y funciones para mostrar diferentes formas de programar un automata. 
@@ -173,5 +174,34 @@ g++ backusNaur.cpp -o backusNaur
 ```
 Y para usarlo solo se debe ejecutar el archivo ``backusNaur.exe`` generado.
 
-<!-- ## 5. Gramática no ambigua
-## 6. Maquina de Turing -->
+## 5. Gramática no ambigua
+Este programa llamado ``unambiguousGram.cpp`` procesa la siguiente gramática no ambigua para paréntesis balanceados y evalúa cadenas proporcionadas por el usuario o generadas automáticamente:
+
+$$B \quad \rightarrow \quad (RB \space | \space ε$$
+
+$$R \quad \rightarrow \quad ) \space | \space (RR$$
+
+La evaluación se realiza expandiendo los no terminales $B$ y $R$ conforme a las producciones, en función del símbolo de entrada que se está leyendo.
+
+- $B \rightarrow (RB$: Si el símbolo esperado es ( desde el no terminal $B$, se genera un bloque que deberá cerrarse más adelante.
+- $B \rightarrow \epsilon$: Al finalizar correctamente, $B$ puede vaciarse.
+- $R \rightarrow)$: Cierre inmediato de un paréntesis abierto.
+- $R \rightarrow (RR$: Anidación; desde $R$ puede iniciarse una nueva apertura que requerirá dos cierres.
+
+La cadena de entrada puede ser introducida manualmente por el usuario o generada aleatoriamente por el programa (sesgo: más "(" en la primera mitad y más ")" en la segunda mitad para favorecer balanceo). La longitud máxima de la cadena es de 1,000 caracteres.
+
+> **📑 Ejemplos** \
+> Aceptadas: $(), \space (()), \space ()(),\space (()())$ \
+> No aceptadas: $)(, \space ((), \space ())(, \space ())$
+
+Durante la ejecución se registra paso a paso la evaluación: símbolo/no terminal evaluado, producción aplicada y cadena intermedia resultante.
+
+A la salida del programa se genera el archivo ``steps.txt``, el cual contiene el registro completo de la evaluación para la cadena procesada.
+
+Para la compilación del programa utilice el siguiente comando:
+```
+g++ unambiguousGram.cpp -o unambiguousGram
+```
+Una vez creado el ejecutable, podrá ejecutarse y seguir las instrucciones para ingresar la cadena manualmente o permitir que se genere automáticamente.
+
+<!-- ## 6. Maquina de Turing -->
