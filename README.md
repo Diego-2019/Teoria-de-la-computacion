@@ -31,11 +31,11 @@ una vez creado el ejecutable podrá utilizarse.
 # Primer bloque
 
 ## 1. Universo
-El programa ``universo.cpp`` genera y analiza el universo de cadenas binarias sobre el alfabeto $\Sigma = \{a,b\}$ considerando todas las longitudes desde 0 hasta n.
+El programa ``universo.cpp`` genera y analiza el universo de cadenas binarias sobre el alfabeto $\Sigma = \lbrace a,b \rbrace$ considerando todas las longitudes desde 0 hasta n.
 Formalmente la salida corresponde al conjunto $L = \cup_{k=0}^n \Sigma^k$
 
 > **📑Ejemplo con $n = 4$** \
-> $L = \{\epsilon, a, b, aa, ab, ba, bb, aaa, ..., bbbb\}$ 
+> $L = \lbrace \epsilon, a, b, aa, ab, ba, bb, aaa, ..., bbbb \rbrace$ 
 > 
 > donde $\epsilon$ es la cadena vacía.
 
@@ -114,28 +114,28 @@ Una vez creado el ejecutable se podrá utilizar el programa.
 ## 3. Automata de pila
 El programa ``stackAutomata.cpp`` implementa un automata de pila diseñado para reconocer el lenguaje libre de contexto:
 
-$$L = \{0^n 1^n | n \geqslant 1\}$$
+$$L = \lbrace 0^n 1^n | n \geqslant 1 \rbrace$$
 
 es decir, todas las cadenas que consisten en una secuencia de ceros seguida por una secuencia de unos, con igual cantidad de cada uno.
 
 Las transiciones del autómata de pila son las siguientes:
 
-- $\delta(q, 0, Z_0) = {(q, XZ_0)}$
+- $\delta (q, 0, Z_0) = {(q, XZ_0)}$
 Si estamos en el estado $q$, leemos un $0$ y el símbolo en el tope de la pila es $Z_0$, permanecemos en $q$ y apilamos una $X$ encima de $Z_0$.
 
-- $\delta(q, 0, X) = {(q, XX)}$
+- $\delta (q, 0, X) = {(q, XX)}$
 Si estamos en $q$, leemos un $0$ y el tope es $X$, permanecemos en $q$ y apilamos otro $X$ (por cada $0$ leído, se apila un $X$).
 
-- $\delta(q, 1, X) = {(p, \epsilon)}$
+- $\delta (q, 1, X) = {(p, \epsilon)}$
 Si estamos en $q$, leemos un $1$ y el tope es $X$, cambiamos al estado $p$ y desapilamos un $X$ (por cada $1$ leído en este punto, se desapila un $X$).
 
-- $\delta(p, 1, X) = {(p, \epsilon)}$
+- $\delta (p, 1, X) = {(p, \epsilon)}$
 Si estamos en $p$, leemos un $1$ y el tope es $X$, permanecemos en $p$ y desapilamos un $X$ (por cada $1$, se desapila un $X$).
 
-- $\delta(p, \epsilon, Z_0) = {(f, Z_0)}$
+- $\delta (p, \epsilon, Z_0) = {(f, Z_0)}$
 Si estamos en $p$, la entrada se ha consumido ($\epsilon$) y el tope es $Z_0$, pasamos al estado final $f$ y la pila solo contiene $Z_0$ (aceptación).
 
-La cadena de entrada puede ser introducida manualmente por el usuario o generada aleatoriamente por el programa. En el modo automático, la longitud máxima de la cadena es de $100{,}000$ caracteres.
+La cadena de entrada puede ser introducida manualmente por el usuario o generada aleatoriamente por el programa. En el modo automático, la longitud máxima de la cadena es de $100,000$ caracteres.
 
 > **📑 Ejemplo de cadenas aceptadas** \
 > $011$ → no aceptada \
@@ -209,7 +209,7 @@ Una vez creado el ejecutable, podrá ejecutarse y seguir las instrucciones para 
 El programa ``turingMachine.cpp`` implementa una máquina de Turing determinista para reconocer el lenguaje:
 
 $$
-L = \{\,0^n 1^n \mid n \geq 1\,\}
+L = \lbrace 0^n 1^n \mid n \geq 1 \rbrace
 $$
 
 es decir, cadenas formadas por una secuencia de ceros seguida de una secuencia de unos, con igual cantidad de cada símbolo.
