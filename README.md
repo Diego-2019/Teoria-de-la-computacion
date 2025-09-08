@@ -11,6 +11,7 @@
   - [3. Automata de pila](#3-automata-de-pila)
   - [4. Backus-Naur](#4-backus-naur)
   - [5. Gramática no ambigua](#5-gramática-no-ambigua)
+  - [6. Maquina de Turing](#6-maquina-de-turing)
 
 # Automata paridad
 ``paridad.cpp`` es un código de ejemplo sobre autómatas que verifica que una cadena tenga un numero par de 0's y 1's usando un switch case y funciones para mostrar diferentes formas de programar un automata. 
@@ -204,4 +205,68 @@ g++ unambiguousGram.cpp -o unambiguousGram
 ```
 Una vez creado el ejecutable, podrá ejecutarse y seguir las instrucciones para ingresar la cadena manualmente o permitir que se genere automáticamente.
 
-<!-- ## 6. Maquina de Turing -->
+## 6. Maquina de Turing
+El programa ``turingMachine.cpp`` implementa una máquina de Turing determinista para reconocer el lenguaje:
+
+$$
+L = \{\,0^n 1^n \mid n \geq 1\,\}
+$$
+
+es decir, cadenas formadas por una secuencia de ceros seguida de una secuencia de unos, con igual cantidad de cada símbolo.
+
+La máquina utiliza el símbolo blanco $B$ para representar una celda vacía y las marcas $X$ y $Y$ para indicar los símbolos $0$ y $1$ que ya han sido procesados.
+
+---
+
+**Tabla de transiciones:**
+
+| Estado | $0$           | $1$           | $X$           | $Y$           | $B$           |
+| ------ | ------------- | ------------- | ------------- | ------------- | ------------- |
+| $q_0$  | $(q_1, X, R)$ | —             | —             | $(q_3, Y, R)$ | —             |
+| $q_1$  | $(q_1, 0, R)$ | $(q_2, Y, L)$ | —             | $(q_1, Y, R)$ | —             |
+| $q_2$  | $(q_2, 0, L)$ | —             | $(q_0, X, R)$ | $(q_2, Y, L)$ | —             |
+| $q_3$  | —             | —             | —             | $(q_3, Y, R)$ | $(q_4, B, R)$ |
+| $q_4$  | —             | —             | —             | —             | —             |
+
+**Descripción breve:**
+
+* **q0**: Busca el primer $0$ sin marcar, lo marca como $X$ y avanza a la derecha ($q_1$). Si en cambio encuentra un $Y,$ pasa a la fase de comprobación final ($q_3$).
+* **q1**: Avanza a la derecha buscando el primer $1$ sin marcar; al encontrarlo, lo marca como $Y$ y retrocede ($q_2$).
+* **q2**: Retrocede hasta encontrar un $X,$ luego avanza de nuevo a $q_0$ para procesar el siguiente $0$.
+* **q3**: Comprueba que el resto de símbolos sean solo $Y$ y termina en $q_4$ al encontrar $B$ (aceptación).
+* **q4**: Estado de aceptación; la cadena es válida.
+
+---
+
+**Características del programa**
+
+1. **Entrada de la cadena**
+
+   * **Modo manual:** El usuario introduce una cadena de $0$ y $1$.
+   * **Modo automático:** Se genera aleatoriamente una cadena de hasta $1,000$ caracteres (válida o inválida).
+
+2. **Salida**
+
+   * Se registra cada paso de la ejecución en un archivo de texto (`IDs.txt`) utilizando descripciones instantáneas.
+
+3. **Animación para cadenas cortas**
+
+   * Si la longitud de la cadena es $\leqslant 16$, el programa ejecuta una animación visual en Python (`TM_animation.py`), que muestra paso a paso la evolución de la cinta y el movimiento del cabezal.
+
+> **📑 Ejemplos** \
+> Aceptadas: $01$, $0011$, $000111$ \
+> No aceptadas: $011$, $00011$, $111000$
+
+Para compilar el programa solo hay que ejecutar el siguiente comando:
+```
+g++ turingMachine.cpp -o turingMachine
+```
+Se creara un ejecutable que podremos abrir para poder empezar a utilizar el programa.
+
+Durante la ejecución:
+
+* Elija modo manual o automático.
+* Si la cadena tiene $\leqslant 16$ caracteres, se lanzará la animación de Python (requiere `TM_animation.py` en el mismo directorio).
+
+> **📝Nota** \
+> El programa principal está en C++ y la animación en Python. Asegúrese de que Python esté instalado y accesible.
